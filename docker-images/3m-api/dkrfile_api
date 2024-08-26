@@ -1,0 +1,10 @@
+FROM python:3.12.3
+
+WORKDIR /usr/src/app
+
+COPY ./docker-images/3m-api/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY ./3mapi/main.py .
+
+CMD [ "fastapi", "run", "/usr/src/app/main.py", "--port", "80" ]

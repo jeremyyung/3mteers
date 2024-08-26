@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Bucket</title>
+    <link href="static/style.css" rel="stylesheet">
+    <div id="nav_div">
+        <a href="url">About</a>
+        <a href="url">Monitor</a>
+    </div>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="control_panel" class="panels">
+            <form>
+                <label>Input Lucky #:</label><br>
+                <span id="client_ip" hidden>{{client_ip}}</span>
+                <input type="number" id="lnum_input" maxlength="50" min="0"><br>
+                <input type="button" value="Submit" onclick="sendPost()">
+                <input type="button" value="Get" onclick="sendGet()">
+            </form>
+        </div>
+        <div id="display_panel" class="panels">
+            <table id="display_table">
+            </table>
+            <pre id="display_area"></pre>
+        </div>
+    </div>
+    <script src="{{url_for('static', filename='modules/helpers.js')}}"></script>
+</body>
+</html>

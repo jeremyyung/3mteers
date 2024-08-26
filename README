@@ -1,0 +1,26 @@
+webUI -> API -> DB
+
+DB table allnumbers:
+id | lucky_num | guest_ip | date
+id: unique id
+lucky_num: just stores the lucky number entered.
+guest_ip: external IP of client that input the number. Default = 1.2.3.4
+date: use TIMESTAMP type, insert current time upon row insert
+
+CREATE DATABASE 3mdb;
+
+CREATE TABLE 3mdb.allnumbers ( id BIGINT NOT NULL AUTO_INCREMENT, lucky_num INT, guest_ip VARCHAR(40) DEFAULT '1.2.3.4', date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, PRIMARY KEY(id) ); 
+
+create user '3madmin'@'%' identified by 'mypass111';
+grant all on 3mdb.* to '3madmin'@'%'; (or do after restoring dump)
+
+-example insert
+insert into allnumbers (lucky_num, guest_ip) values (50);
+
+
+TODO:
+Put on github and dockerize 3mapi/3mgui
+docker-compose: 
+  *network containers together
+  *create custom user and grant all permissions from %
+  *allow connections from anywhere (my.cnf / docker-compose command line flags?)

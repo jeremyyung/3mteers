@@ -1,0 +1,3 @@
+#ignore any pycharm generated dirs
+__pycache__/
+.idea/

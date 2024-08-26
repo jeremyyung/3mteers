@@ -1,0 +1,21 @@
+services:
+  db:
+    image: 3m-mysql:1.0
+    command:
+      --bind-address=0.0.0.0
+    environment:
+      MYSQL_ROOT_PASSWORD: pass123
+    volumes:
+      - db:/var/lib/mysql
+    container_name: 3msql
+    ports:
+      - "3306:3306"
+  
+  api:
+    image: 3m-api:1.0
+    container_name: 3mapi
+    ports: 
+      - "8080:80"
+
+volumes:
+  db:

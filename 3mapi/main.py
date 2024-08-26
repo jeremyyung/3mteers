@@ -19,7 +19,7 @@ app.add_middleware(
     allow_headers=["*"]
 )
 mydb = mysql.connector.connect(
-    host="api-3m",
+    host="db",
     user="3madmin",
     password="mypass111",
     port="3306",

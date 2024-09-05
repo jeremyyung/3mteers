@@ -12,9 +12,13 @@ RUN tar -xvf Python-3.12.3.tgz
 WORKDIR /usr/src/app/Python-3.12.3
 RUN ./configure && make && make altinstall
 
-#Setup full app
+#Setup full app, first make python virtualenv and install requirements.
 WORKDIR /usr/src/app
 COPY ./docker-images/3m-gui/requirements.txt .
-COPY ./3mgui /usr/local/apache2/htdocks
 RUN /usr/local/bin/python3.12 -m venv ./flaskenv
 RUN ./flaskenv/bin/python -m pip install -r requirements.txt
+
+#Copy py app to default apache documents folder, install wsgi mod and config file
+COPY ./3mgui /usr/local/apache2/htdocks
+COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
+RUN apt install -y libapache2-mod-wsgi-py3

@@ -1,0 +1,20 @@
+FROM httpd:2.4.62
+
+#Make working dir
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+#Install python and stuff required to compile source
+RUN apt update
+RUN apt install -y wget gcc pkg-config make zlib1g-dev libssl-dev sqlite3 libsqlite3-dev pip tar
+RUN wget https://www.python.org/ftp/python/3.12.3/Python-3.12.3.tgz
+RUN tar -xvf Python-3.12.3.tgz
+WORKDIR /usr/src/app/Python-3.12.3
+RUN ./configure && make && make altinstall
+
+#Setup full app
+WORKDIR /usr/src/app
+COPY ./docker-images/3m-gui/requirements.txt .
+COPY ./3mgui ./3mgui
+RUN /usr/local/bin/python3.12 -m venv ./flaskenv
+RUN ./flaskenv/bin/python -m pip install -r requirements.txt

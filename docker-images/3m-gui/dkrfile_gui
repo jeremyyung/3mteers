@@ -15,6 +15,6 @@ RUN ./configure && make && make altinstall
 #Setup full app
 WORKDIR /usr/src/app
 COPY ./docker-images/3m-gui/requirements.txt .
-COPY ./3mgui ./3mgui
+COPY ./3mgui /usr/local/apache2/htdocks
 RUN /usr/local/bin/python3.12 -m venv ./flaskenv
 RUN ./flaskenv/bin/python -m pip install -r requirements.txt

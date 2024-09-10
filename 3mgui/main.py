@@ -1,5 +1,10 @@
 from flask import Flask, request, render_template
+from flask_cors import CORS
 app = Flask(__name__)
+
+#Prevent cross-origin requests from getting blocked in javascript
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 #Return static page
 @app.route('/')

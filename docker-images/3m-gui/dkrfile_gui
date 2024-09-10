@@ -25,3 +25,6 @@ RUN /usr/local/apache2/htdocs/3mgui/bin/python -m pip install -r /usr/src/app/re
 
 #Install wsgi mod 
 RUN apt install -y libapache2-mod-wsgi-py3
+
+#Cleanup
+RUN rm /usr/src/app/Python-3.12.3.tgz

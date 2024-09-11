@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./3mapi/main.py .
 
-CMD [ "fastapi", "run", "/usr/src/app/main.py", "--port", "80" ]
+CMD [ "fastapi", "run", "/usr/src/app/main.py", "--port", "8080" ]

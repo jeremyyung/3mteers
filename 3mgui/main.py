@@ -1,10 +1,5 @@
 from flask import Flask, request, render_template
-from flask_cors import CORS
 app = Flask(__name__)
-
-#Prevent cross-origin requests from getting blocked in javascript
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
 
 #Return static page
 @app.route('/')
@@ -14,6 +9,6 @@ def run():
 
 # run the application
 if __name__ == "__main__":
-    PORT = 8080
+    PORT = 7070
     app.config['DEBUG'] = False
     app.run(host='0.0.0.0', port=PORT)

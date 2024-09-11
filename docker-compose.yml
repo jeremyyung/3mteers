@@ -10,12 +10,28 @@ services:
     container_name: 3msql
     ports:
       - "3306:3306"
+    healthcheck:
+      test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$MYSQL_ROOT_PASSWORD' ]
+      interval: 20s
+      retries: 3
+      start_period: 10s
+      timeout: 10s
   
   api:
     image: 3m-api:1.0
     container_name: 3mapi
+    depends_on:
+      db:
+        condition: service_healthy
+        restart: true
     ports: 
-      - "8080:80"
+      - "8080:8080"
+
+  gui:
+    image: 3m-gui:1.0
+    container_name: 3mgui
+    ports:
+      - "80:80"
 
 volumes:
   db:

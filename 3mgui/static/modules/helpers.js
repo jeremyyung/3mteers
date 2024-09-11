@@ -1,4 +1,4 @@
-var apiurl = 'http://127.0.0.1:8000'
+var apiurl = 'http://api:8080'
 var test = [{"one":"1", "two":"2"},{"one":"4", "two":"5"}]
 
 async function sendGet(){
@@ -72,6 +72,3 @@ function wipeTable(){
         node.remove()
     })
 }
-
-//fillTable(test)
-//sendGet()

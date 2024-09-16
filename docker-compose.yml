@@ -11,10 +11,10 @@ services:
     ports:
       - "3306:3306"
     healthcheck:
-      test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$MYSQL_ROOT_PASSWORD' ]
+      test: ["CMD", "mysql", "-u", "3madmin", "-pmypass111", "-e", "show databases;"] 
       interval: 20s
-      retries: 3
-      start_period: 10s
+      retries: 5
+      start_period: 180s
       timeout: 10s
   
   api:

@@ -17,6 +17,8 @@ grant all on 3mdb.* to '3madmin'@'%'; (or do after restoring dump)
 -example insert
 insert into allnumbers (lucky_num, guest_ip) values (50);
 
+REQS:
+gcc Python-3.12.3 pkg-config docker.io docker-compose-v2 docker-buildx
 
 TODO:
 Put on github and dockerize 3mapi/3mgui
